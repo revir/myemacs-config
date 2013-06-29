@@ -1,42 +1,8 @@
 (add-to-list 'load-path "/home/revir/.emacs.d/cedet-bzr/trunk/")
-(load-file "~/.emacs.d/cedet-bzr/trunk/cedet-devel-load.el")
-
-(setq semantic-default-submodes '(global-semantic-idle-scheduler-mode
-                                  global-semanticdb-minor-mode
-                                  global-semantic-idle-summary-mode
-                                  global-semantic-mru-bookmark-mode
-                                  global-semantic-stickyfunc-mode
-                                  global-semantic-tag-folding-mode 
-                                  global-semantic-decoration-mode
-                                  global-semantic-idle-local-symbol-highlight-mode
-                                  global-semantic-idle-scheduler-mode
-                                  global-semantic-idle-summary-mode  ;;show tag/function information on minibuffer.
-                                  global-semantic-idle-completions-mode
-
-                                  ;;
-                                  global-semantic-show-unmatched-syntax-mode
-                                  global-semantic-show-parser-state-mode
-								  ))
-(semantic-mode 1)
-
-(setq-mode-local c-mode semanticdb-find-default-throttle
-                 '(project unloaded system recursive))
-
-
-(setq-mode-local c-mode semanticdb-find-default-throttle
-                 '(project unloaded system recursive))
 
 (defun my-semantic-hook ()
   (imenu-add-to-menubar "TAGS"))
 (add-hook 'semantic-init-hooks 'my-semantic-hook)
-
-;; if you want to enable support for gnu global
-(semanticdb-enable-gnu-global-databases 'c-mode)
-(semanticdb-enable-gnu-global-databases 'c++-mode)
-;; enable ctags for some languages:
-;;  Unix Shell, Perl, Pascal, Tcl, Fortran, Asm
-(when (cedet-ectag-version-check)
-  (semantic-load-enable-primary-exuberent-ctags-support))
 
 ;;shortcut key
 (global-set-key (kbd "C-=")  'senator-fold-tag)
@@ -77,6 +43,38 @@
 
 (defun cedet-c-settings ()
   (message "Hi, cedet-c-settings")
+  (load-file "~/.emacs.d/cedet-bzr/trunk/cedet-devel-load.el")
+  (setq semantic-default-submodes '(global-semantic-idle-scheduler-mode
+                                    global-semanticdb-minor-mode
+                                    global-semantic-idle-summary-mode
+                                    global-semantic-mru-bookmark-mode
+                                    global-semantic-stickyfunc-mode
+                                    global-semantic-tag-folding-mode 
+                                    global-semantic-decoration-mode
+                                    global-semantic-idle-local-symbol-highlight-mode
+                                    global-semantic-idle-scheduler-mode
+                                    global-semantic-idle-summary-mode  ;;show tag/function information on minibuffer.
+                                    global-semantic-idle-completions-mode
+
+                                    ;;
+                                    global-semantic-show-unmatched-syntax-mode
+                                    global-semantic-show-parser-state-mode
+                                    ))
+  (semantic-mode 1)
+
+  (setq-mode-local c-mode semanticdb-find-default-throttle
+                   '(project unloaded system recursive))
+
+  (setq-mode-local c-mode semanticdb-find-default-throttle
+                   '(project unloaded system recursive))
+  ;; if you want to enable support for gnu global
+  (semanticdb-enable-gnu-global-databases 'c-mode)
+  (semanticdb-enable-gnu-global-databases 'c++-mode)
+  ;; enable ctags for some languages:
+  ;;  Unix Shell, Perl, Pascal, Tcl, Fortran, Asm
+  (when (cedet-ectag-version-check)
+    (semantic-load-enable-primary-exuberent-ctags-support))
+
   (require 'semantic/ia)
   (require 'semantic/bovine/gcc))
 

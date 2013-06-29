@@ -1,8 +1,12 @@
 (require 'python)
-(message "Hi333, this is my python-settings")
-
 (message "Hi22, this is my python-settings")
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
+
+;;Install Jedi
+(add-to-list 'load-path "~/.emacs.d/emacs-jedi/")
+(setq jedi:setup-keys t)
+(autoload 'jedi:ac-setup "jedi" nil t)
+(jedi:ac-setup)
 
 ;; Initialize Pymacs
 (autoload 'pymacs-apply "pymacs")

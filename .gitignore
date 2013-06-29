@@ -1,3 +1,7 @@
 auto-save-list
 el-get
 semanticdb
+.session
+ac-comphist.dat
+emacs-epc/.git
+emacs-jedi/.git

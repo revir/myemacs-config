@@ -19,13 +19,15 @@
 (global-set-key [M-tab] 'other-window)
 (global-set-key [f7] 'smart-compile)
 
+(define-key lisp-mode-map [C-c C-e] 'eval-region) ;;???????
+
 ;;By super-charging Emacs's completion engine and improving the speed at which you open files and buffers
 ;;See here: http://www.masteringemacs.org/articles/2010/10/10/introduction-to-ido-mode/
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
 (ido-mode 1)
 (setq ido-use-filename-at-point 'guess)
-(setq ido-file-extensions-order '(".txt" ".py" ".h" ".el" ".cpp" ".h" ".cc" ".html"))
+(setq ido-file-extensions-order '(".py" ".cpp" ".h" ".c" ".el" ".cc" ".json" ".js"))
 
 ;; Open Next Line, use 'C-o'
 (require 'open-next-line)
@@ -104,7 +106,7 @@
 ;;高亮显示区域选择
 ;;(transient-mark-mode t)
 ;;页面平滑滚动,scroll-margin 3 靠近屏幕边沿3行开始滚动，正好可以看到上下文
-(setq scroll-margin 3 scroll-consrvatively 10000)
+;;(setq scroll-margin 3 scroll-consrvatively 10000)
 ;;高亮显示成对括号
 (show-paren-mode t)
 (setq show-paren-style 'parentheses)	
@@ -116,7 +118,7 @@
 ;;回显区
 ;;=======================================================================
 ;;闪屏报警
-(setq visible-bell t)
+;;(setq visible-bell t)
 ;;使用y or n提问
 (fset 'yes-or-no-p 'y-or-n-p)
 ;;锁定行高
@@ -189,9 +191,6 @@
 
 ;;使用鼠标中键可以粘贴
 (setq mouse-yank-at-point t)
-
-;; 自动的在文件末增加一新行
-(setq require-final-newline t)
 
 ;;Non-nil if Transient-Mark mode is enabled.
 (setq-default transient-mark-mode t)
