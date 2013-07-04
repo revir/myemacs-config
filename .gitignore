@@ -5,3 +5,8 @@ semanticdb
 ac-comphist.dat
 emacs-epc/.git
 emacs-jedi/.git
+url/
+elpa/archives/
+*~
+*.bak
+*.backup

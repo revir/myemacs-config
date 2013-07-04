@@ -21,6 +21,9 @@
 
 (define-key lisp-mode-map [C-c C-e] 'eval-region) ;;???????
 
+(setq grep-find-command 
+      "grep -rnH --exclude=.{hg,svn,git} --exclude={\\*~,semanticdb} --include=-e '' .")
+
 ;;By super-charging Emacs's completion engine and improving the speed at which you open files and buffers
 ;;See here: http://www.masteringemacs.org/articles/2010/10/10/introduction-to-ido-mode/
 (setq ido-enable-flex-matching t)
@@ -170,7 +173,7 @@
 (setq cua-auto-tabify-rectangles nil) ;; Don't tabify after rectangle commands
 (transient-mark-mode 1) ;; No region when it is not highlighted
 (setq cua-keep-region-after-copy t) ;; Standard Windows behaviour
-
+(cua-selection-mode t)
 ;;===============================================================
 ;;外观设置
 ;;===============================================================
